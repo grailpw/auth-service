@@ -1,0 +1,24 @@
+
+services:
+
+  app:
+    build: .
+    depends_on:
+      - users-db
+    ports:
+      - "8080:8080"
+    environment:
+      DATABASE_URL: "users-db:5432"
+      DATABASE_USERNAME: "admin"
+      DATABASE_PASSWORD: "admin"
+      HIBERNATE_DDL_AUTO: "create-drop"
+      JWT_KEY: "W77tFitLrLeJkNA1LJs8cXRYXIsIvrl8"
+      JWT_LIFETIME: "1800000"
+  users-db:
+    image: pgdb
+    environment:
+      POSTGRES_DB: "usersdb"
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "admin"
+    ports:
+      - "5432:5432"

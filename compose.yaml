@@ -2,7 +2,7 @@
 services:
 
   app:
-    build: .
+    image: ghcr.io/grailpw/auth-service:master
     depends_on:
       - users-db
     ports:
@@ -15,7 +15,7 @@ services:
       JWT_KEY: "W77tFitLrLeJkNA1LJs8cXRYXIsIvrl8"
       JWT_LIFETIME: "1800000"
   users-db:
-    image: pgdb
+    image: postgres
     environment:
       POSTGRES_DB: "usersdb"
       POSTGRES_USER: "admin"

@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Build and push the image
         run: |
-          docker login --username grailpw --password ${{secrets.GH_PAT}} ghcr.io
+          docker login --username ${{repository.owner}} --password ${{secrets.GH_PAT}} ghcr.io
           docker build . --tag ghcr.io/${{github.repository}}:latest
           docker push ghcr.io/${{github.repository}}:latest
       

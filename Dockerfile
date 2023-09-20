@@ -11,6 +11,7 @@ COPY src $APP_HOME/src
 RUN gradle bootJar
 
 FROM eclipse-temurin
+LABEL org.opencontainers.image.source=https://github.com/grailpw/auth-service
 ENV ARTIFACT_NAME=AuthService-0.0.1-SNAPSHOT.jar
 ENV APP_HOME=/usr/app
 
